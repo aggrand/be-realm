@@ -24,11 +24,8 @@ export const AppSync: React.FC = () => {
 
   const lastOpen = scheduleObj.length > 0 ? scheduleObj[0].lastOpen : undefined
 
-  console.log("new lastopen")
-  console.log(lastOpen)
   const tasksQuery = useQuery(message);
   const tasks = tasksQuery.filtered(`openTime == $0`, lastOpen).sorted('createdAt')
-  console.log(tasks)
 
   useEffect(() => {
     realm.subscriptions.update(mutableSubs => {

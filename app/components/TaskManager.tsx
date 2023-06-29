@@ -2,6 +2,7 @@ import React, {useCallback} from 'react';
 import {View, StyleSheet, Switch, Text} from 'react-native';
 
 import {message} from '../models/Task';
+import {schedule} from '../models/Schedule';
 import {IntroText} from './IntroText';
 import {AddTaskForm} from './AddTaskForm';
 import TaskList from './TaskList';
@@ -19,7 +20,15 @@ export const TaskManager: React.FC<{
 
   const handleAddTask = useCallback(
     (messageText: string): void => {
-      if (!messageText) {
+
+      const lastOpenRaw = realm.objects(schedule)
+      if (!lastOpenRaw) {
+	return;
+      }
+      const lastOpen = lastOpenRaw[0].lastOpen;
+      console.log(lastOpen);
+
+      if (!messageText || !lastOpen) {
         return;
       }
 
@@ -34,6 +43,7 @@ export const TaskManager: React.FC<{
         return realm.create("message", {
           messageText: messageText,
           userID: userID ?? 'SYNC_DISABLED',
+	  openTime: lastOpen,
         });
       });
       setShowMessages(true);
