@@ -9,24 +9,8 @@ export const IntroText = () => {
   return (
     <View style={styles.content}>
       <Text style={styles.paragraph}>
-        Welcome to the Realm React Native TypeScript Template
+        Welcome to BeRealm, our App Services Week app 🎉
       </Text>
-      <Text style={styles.paragraph}>
-        Start adding a task using the form at the top of the screen to see how
-        they are created in Realm. You can also toggle the task status or remove
-        it from the list.
-      </Text>
-      <Text style={styles.paragraph}>
-        Learn more about the React Native Realm SDK at:
-      </Text>
-      <Pressable
-        onPress={() =>
-          openURLInBrowser('https://docs.mongodb.com/realm/sdk/react-native/')
-        }>
-        <Text style={[styles.paragraph, styles.link]}>
-          docs.mongodb.com/realm/sdk/react-native
-        </Text>
-      </Pressable>
     </View>
   );
 };

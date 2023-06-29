@@ -28,7 +28,7 @@ export const AddTaskForm: React.FC<AddTaskFormProps> = ({onSubmit}) => {
     <View style={styles.form}>
       <TextInput
         value={description}
-        placeholder="Enter new task description"
+        placeholder="What's up?"
         onChangeText={setDescription}
         autoCorrect={false}
         autoCapitalize="none"
