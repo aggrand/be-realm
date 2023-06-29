@@ -6,7 +6,7 @@
         "createdAt": {
             "bsonType": "date"
         },
-        "message": {
+        "messageText": {
             "bsonType": "string"
         },
         "userID": {
@@ -16,7 +16,7 @@
     "required": [
         "_id",
         "createdAt",
-        "message",
+        "messageText",
         "userID"
     ],
     "title": "message"
