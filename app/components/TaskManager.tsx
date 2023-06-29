@@ -12,7 +12,7 @@ import {shadows} from '../styles/shadows';
 
 export const TaskManager: React.FC<{
   tasks: Realm.Results<message & Realm.Object>;
-  userID?: string;
+  userID: string;
   setShowMessages: (showMessages: boolean) => void;
   showMessages: boolean;
 }> = ({tasks, userID, setShowMessages, showMessages}) => {
@@ -51,11 +51,17 @@ export const TaskManager: React.FC<{
     [realm, userID],
   );
 
+  let alreadySubmitted = false;
+  for (const task of tasks) {
+    if (task.userID == userID) {
+      alreadySubmitted = true;
+    }
+  }
 
   return (
     <>
       <View style={styles.content}>
-        <AddTaskForm onSubmit={handleAddTask} />
+        {alreadySubmitted ? undefined : <AddTaskForm onSubmit={handleAddTask} />}
         {tasks.length === 0 ? (
           <IntroText />
         ) : (
