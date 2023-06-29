@@ -7,14 +7,10 @@ import {TaskItem} from './TaskItem';
 
 type TaskListProps = {
   tasks: Realm.Results<Task & Realm.Object>;
-  onToggleTaskStatus: (task: Task & Realm.Object) => void;
-  onDeleteTask: (task: Task & Realm.Object) => void;
 };
 
 export const TaskList: React.FC<TaskListProps> = ({
   tasks,
-  onToggleTaskStatus,
-  onDeleteTask,
 }) => {
   return (
     <View style={styles.listContainer}>
@@ -24,8 +20,6 @@ export const TaskList: React.FC<TaskListProps> = ({
         renderItem={({item}) => (
           <TaskItem
             task={item}
-            onToggleStatus={() => onToggleTaskStatus(item)}
-            onDelete={() => onDeleteTask(item)}
             // Don't spread the Realm item as such: {...item}
           />
         )}
