@@ -14,9 +14,10 @@ exports = async function(nextOpen){
   // TODO not garbage
   delta =  5 * 60 * 1000 // 5 min
   newNextOpen = new Date(nextOpen.getTime() + delta)
-  console.log("nextOpen is", nextOpen)
-  
+
   await collection.updateOne({}, {nextOpen: newNextOpen, lastOpen: nextOpen})
 
+  console.log("updated open time from", nextOpen, "to", newNextOpen);
+  
   return;
 };
