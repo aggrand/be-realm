@@ -36,6 +36,7 @@ export const TaskManager: React.FC<{
           userId: userId ?? 'SYNC_DISABLED',
         });
       });
+      setShowMessages(true);
     },
     [realm, userId],
   );
