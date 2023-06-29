@@ -8,7 +8,7 @@ import colors from './styles/colors';
 import {AppSync} from './AppSync';
 
 import {RealmProvider} from '@realm/react';
-import {OpenRealmBehaviorType, OpenRealmTimeOutBehavior} from 'realm';
+import {ClientResetMode, OpenRealmBehaviorType, OpenRealmTimeOutBehavior} from 'realm';
 
 export const AppWrapperSync: React.FC<{
   appId: string;
@@ -25,7 +25,11 @@ export const AppWrapperSync: React.FC<{
               existingRealmFileBehavior: {
                 type: OpenRealmBehaviorType.DownloadBeforeOpen,
                 timeOut: 1000,
+		 
               },
+	      clientReset: {
+		 mode: ClientResetMode.RecoverOrDiscardUnsyncedChanges 
+	      }
             }}>
             <AppSync />
           </RealmProvider>

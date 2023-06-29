@@ -3,6 +3,7 @@ import {useApp, useAuth, useQuery, useRealm, useUser} from '@realm/react';
 import {Pressable, StyleSheet, Text} from 'react-native';
 
 import {message} from './models/Task';
+import {schedule} from './models/Schedule';
 import {TaskManager} from './components/TaskManager';
 import {buttonStyles} from './styles/button';
 import {shadows} from './styles/shadows';
@@ -15,22 +16,28 @@ export const AppSync: React.FC = () => {
   const app = useApp();
   const {logOut} = useAuth();
   const [showMessages, setShowMessages] = useState(false);
-  const tasks = useQuery(
-    message,
+  const scheduleObj = useQuery(
+    schedule,
     collection =>
-      showMessages
-        ? collection.sorted('createdAt')
-    // TODO: Figure this out
-        : collection.filtered('messageText == "secret_backdoor_intentional_easter_egg"').sorted('createdAt'),
-    [showMessages],
+      collection.filtered("truepredicate").sorted("_id"),
   );
+
+  const lastOpen = scheduleObj.length > 0 ? scheduleObj[0].lastOpen : undefined
+
+  console.log("new lastopen")
+  console.log(lastOpen)
+  const tasksQuery = useQuery(message);
+  const tasks = tasksQuery.filtered(`openTime == $0`, lastOpen).sorted('createdAt')
+  console.log(tasks)
 
   useEffect(() => {
     realm.subscriptions.update(mutableSubs => {
+      console.log("running useeffect")
       mutableSubs.removeAll();
       mutableSubs.add(tasks);
+      mutableSubs.add(scheduleObj);
     });
-  }, [realm, tasks]);
+  }, [realm, tasks, lastOpen, scheduleObj]);
 
   return (
     <>
