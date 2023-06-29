@@ -12,9 +12,9 @@ import {shadows} from '../styles/shadows';
 export const TaskManager: React.FC<{
   tasks: Realm.Results<Task & Realm.Object>;
   userId?: string;
-  setShowDone: (showDone: boolean) => void;
-  showDone: boolean;
-}> = ({tasks, userId, setShowDone, showDone}) => {
+  setShowMessages: (showMessages: boolean) => void;
+  showMessages: boolean;
+}> = ({tasks, userId, setShowMessages, showMessages}) => {
   const realm = useRealm();
 
   const handleAddTask = useCallback(
@@ -92,7 +92,7 @@ export const TaskManager: React.FC<{
       </View>
       <View style={styles.switchPanel}>
         <Text style={styles.switchPanelText}>Show Completed?</Text>
-        <Switch value={showDone} onValueChange={() => setShowDone(!showDone)} />
+        <Switch value={showMessages} onValueChange={() => setShowMessages(!showMessages)} />
       </View>
     </>
   );

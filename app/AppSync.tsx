@@ -14,14 +14,14 @@ export const AppSync: React.FC = () => {
   const user = useUser();
   const app = useApp();
   const {logOut} = useAuth();
-  const [showDone, setShowDone] = useState(false);
+  const [showMessages, setShowMessages] = useState(false);
   const tasks = useQuery(
     Task,
     collection =>
-      showDone
+      showMessages
         ? collection.sorted('createdAt')
         : collection.filtered('isComplete == false').sorted('createdAt'),
-    [showDone],
+    [showMessages],
   );
 
   useEffect(() => {
@@ -36,8 +36,8 @@ export const AppSync: React.FC = () => {
       <TaskManager
         tasks={tasks}
         userId={user?.id}
-        setShowDone={setShowDone}
-        showDone={showDone}
+        setShowMessages={setShowMessages}
+        showMessages={showMessages}
       />
       <Pressable style={styles.authButton} onPress={logOut}>
         <Text

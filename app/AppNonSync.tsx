@@ -6,17 +6,17 @@ import {TaskManager} from './components/TaskManager';
 import {useQuery} from '@realm/react';
 
 export const AppNonSync = () => {
-  const [showDone, setShowDone] = React.useState(false);
+  const [showMessages, setShowMessages] = React.useState(false);
   const tasks = useQuery(
     Task,
     collection =>
-      showDone
+      showMessages
         ? collection.sorted('createdAt')
         : collection.filtered('isComplete == false').sorted('createdAt'),
-    [showDone],
+    [showMessages],
   );
 
   return (
-    <TaskManager tasks={tasks} setShowDone={setShowDone} showDone={showDone} />
+    <TaskManager tasks={tasks} setShowMessages={setShowMessages} showMessages={showMessages} />
   );
 };
