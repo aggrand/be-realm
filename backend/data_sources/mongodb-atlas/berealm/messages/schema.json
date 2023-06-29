@@ -10,7 +10,7 @@
             "bsonType": "string"
         },
         "userID": {
-            "bsonType": "objectId"
+            "bsonType": "string"
         }
     },
     "required": [
