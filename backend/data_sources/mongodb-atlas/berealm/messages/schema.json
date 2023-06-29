@@ -17,7 +17,6 @@
         }
     },
     "required": [
-        "_id",
         "createdAt",
         "messageText",
         "openTime",

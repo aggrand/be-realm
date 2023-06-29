@@ -10,5 +10,10 @@
             "bsonType": "date"
         }
     },
+    "required": [
+        "_id",
+        "lastOpen",
+        "nextOpen"
+    ],
     "title": "schedule"
 }
