@@ -21,7 +21,7 @@ export const AppSync: React.FC = () => {
       showMessages
         ? collection.sorted('createdAt')
     // TODO: Figure this out
-        : collection.filtered('userId == "-1"').sorted('createdAt'),
+        : collection.filtered('userID == "-1"').sorted('createdAt'),
     [showMessages],
   );
 

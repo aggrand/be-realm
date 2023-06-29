@@ -11,10 +11,10 @@ import {shadows} from '../styles/shadows';
 
 export const TaskManager: React.FC<{
   tasks: Realm.Results<Task & Realm.Object>;
-  userId?: string;
+  userID?: string;
   setShowMessages: (showMessages: boolean) => void;
   showMessages: boolean;
-}> = ({tasks, userId, setShowMessages, showMessages}) => {
+}> = ({tasks, userID, setShowMessages, showMessages}) => {
   const realm = useRealm();
 
   const handleAddTask = useCallback(
@@ -33,12 +33,12 @@ export const TaskManager: React.FC<{
       realm.write(() => {
         return realm.create(Task, {
           description,
-          userId: userId ?? 'SYNC_DISABLED',
+          userID: userID ?? 'SYNC_DISABLED',
         });
       });
       setShowMessages(true);
     },
-    [realm, userId],
+    [realm, userID],
   );
 
 
