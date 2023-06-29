@@ -38,7 +38,6 @@ export const AppSync: React.FC = () => {
 
   return (
     <>
-      <Text style={styles.idText}>Syncing with app id: {app.id}</Text>
       <TaskManager
         tasks={tasks}
         userID={user?.id}
@@ -49,7 +48,6 @@ export const AppSync: React.FC = () => {
         <Text
           style={styles.authButtonText}>{`Logout ${user?.profile.email}`}</Text>
       </Pressable>
-      <OfflineModeButton />
     </>
   );
 };
