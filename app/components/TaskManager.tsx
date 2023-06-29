@@ -18,8 +18,8 @@ export const TaskManager: React.FC<{
   const realm = useRealm();
 
   const handleAddTask = useCallback(
-    (description: string): void => {
-      if (!description) {
+    (message: string): void => {
+      if (!message) {
         return;
       }
 
@@ -32,7 +32,7 @@ export const TaskManager: React.FC<{
       // no changes propagate and the transaction needs to start over when connectivity allows.
       realm.write(() => {
         return realm.create(Task, {
-          description,
+          message,
           userID: userID ?? 'SYNC_DISABLED',
         });
       });

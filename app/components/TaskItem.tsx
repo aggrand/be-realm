@@ -17,7 +17,7 @@ export const TaskItem = React.memo<TaskItemProps>(
         <Text style={styles.icon}>{'○'}</Text>
         <View style={styles.descriptionContainer}>
           <Text numberOfLines={1} style={styles.description}>
-            {task.description}
+            {task.message}
           </Text>
         </View>
       </View>
