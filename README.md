@@ -1,4 +1,4 @@
-# Expo Template Realm TypeScript
+# BeRealm
 <p>
   <!-- iOS -->
   <img alt="Supports Expo iOS" longdesc="Supports Expo iOS" src="https://img.shields.io/badge/iOS-4630EB.svg?style=flat-square&logo=APPLE&labelColor=999999&logoColor=fff" />
@@ -6,9 +6,9 @@
   <img alt="Supports Expo Android" longdesc="Supports Expo Android" src="https://img.shields.io/badge/Android-4630EB.svg?style=flat-square&logo=ANDROID&labelColor=A4C639&logoColor=fff" />
 </p>
 
-Simple Expo template to quickly get started with Realm.
+Once per day, share how you're doing with everyone on your team!
 
-## 🚀 How to use
+## 🚀 Dev Setup
 
 If you haven't already, install the `expo-cli`:
 ```
@@ -18,11 +18,6 @@ npm install --global expo-cli
 yarn global add expo-cli
 ```
 
-Then use the following command to generate your template:
-
-```
-expo init MyAwesomeRealmApp --template @realm/expo-template
-```
 ## 🏃 How to build and run locally
 
 - [Setup development Environment](https://reactnative.dev/docs/environment-setup)
