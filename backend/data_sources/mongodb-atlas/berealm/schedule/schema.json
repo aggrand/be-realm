@@ -1,0 +1,15 @@
+{
+    "properties": {
+        "_id": {
+            "bsonType": "objectId"
+        },
+        "openAt": {
+            "bsonType": "date"
+        }
+    },
+    "required": [
+        "_id",
+        "openAt"
+    ],
+    "title": "schedule"
+}

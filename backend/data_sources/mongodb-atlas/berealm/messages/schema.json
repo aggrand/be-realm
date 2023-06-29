@@ -1,0 +1,23 @@
+{
+    "properties": {
+        "_id": {
+            "bsonType": "objectId"
+        },
+        "createdAt": {
+            "bsonType": "date"
+        },
+        "message": {
+            "bsonType": "string"
+        },
+        "userID": {
+            "bsonType": "objectId"
+        }
+    },
+    "required": [
+        "_id",
+        "createdAt",
+        "message",
+        "userID"
+    ],
+    "title": "message"
+}
