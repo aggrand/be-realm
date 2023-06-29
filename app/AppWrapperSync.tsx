@@ -25,9 +25,6 @@ export const AppWrapperSync: React.FC<{
               existingRealmFileBehavior: {
                 type: OpenRealmBehaviorType.DownloadBeforeOpen,
                 timeOut: 1000,
-                timeOutBehavior:
-                  // In v11 the enums are not set up correctly, so we need to use the string values
-                  OpenRealmTimeOutBehavior?.OpenLocalRealm ?? 'openLocalRealm',
               },
             }}>
             <AppSync />

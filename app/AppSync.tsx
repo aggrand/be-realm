@@ -21,12 +21,13 @@ export const AppSync: React.FC = () => {
       showMessages
         ? collection.sorted('createdAt')
     // TODO: Figure this out
-        : collection.filtered('message == "secret_backdoor_intentional_easter_egg"').sorted('createdAt'),
+        : collection.filtered('messageText == "secret_backdoor_intentional_easter_egg"').sorted('createdAt'),
     [showMessages],
   );
 
   useEffect(() => {
     realm.subscriptions.update(mutableSubs => {
+      mutableSubs.removeAll();
       mutableSubs.add(tasks);
     });
   }, [realm, tasks]);
