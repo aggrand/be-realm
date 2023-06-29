@@ -2,5 +2,17 @@
     {
         "name": "resetFunc",
         "private": true
+    },
+    {
+        "name": "LaunchTheRocket",
+        "private": false,
+        "run_as_system": true,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "ReallyLaunchTheRocket",
+        "private": false,
+        "run_as_system": true,
+        "disable_arg_logs": true
     }
 ]
