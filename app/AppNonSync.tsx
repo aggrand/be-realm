@@ -12,7 +12,8 @@ export const AppNonSync = () => {
     collection =>
       showMessages
         ? collection.sorted('createdAt')
-        : collection.filtered('isComplete == false').sorted('createdAt'),
+    // TODO: Figure this out
+        : collection.filtered('userId == "-1"').sorted('createdAt'),
     [showMessages],
   );
 
