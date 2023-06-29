@@ -8,8 +8,5 @@
     "permissions": {
         "rules": {},
         "defaultRoles": []
-    },
-    "queryable_fields_names": [
-        "messageText"
-    ]
+    }
 }
