@@ -35,7 +35,7 @@ export const AddTaskForm: React.FC<AddTaskFormProps> = ({onSubmit}) => {
         style={styles.textInput}
       />
       <Pressable onPress={handleSubmit} style={styles.submit}>
-        <Text style={styles.icon}>＋</Text>
+        <Text style={styles.icon}>💬</Text>
       </Pressable>
     </View>
   );
