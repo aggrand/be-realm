@@ -10,6 +10,7 @@
         "defaultRoles": []
     },
     "queryable_fields_names": [
-        "messageText"
+        "messageText",
+        "openTime"
     ]
 }
