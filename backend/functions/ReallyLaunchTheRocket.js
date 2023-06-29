@@ -9,7 +9,7 @@ exports = async function(nextOpen){
   // Get a collection from the context
   var collection = context.services.get(serviceName).db(dbName).collection(collName);
   
-  // can call with nextOpen == undefined or with a real Date
+    // can call with nextOpen == undefined or with a real Date
   if (!nextOpen) {
       var findResult;
       findResult = await collection.findOne({});
@@ -23,6 +23,8 @@ exports = async function(nextOpen){
   newNextOpen = new Date(nextOpen.getTime() + delta)
 
   await collection.updateOne({}, {nextOpen: newNextOpen, lastOpen: nextOpen})
+  
+  
 
   console.log("updated open time from", nextOpen, "to", newNextOpen);
   
