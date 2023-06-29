@@ -4,10 +4,10 @@ import {View, Text, Pressable, StyleSheet} from 'react-native';
 
 import {shadows} from '../styles/shadows';
 import colors from '../styles/colors';
-import {Task} from '../models/Task';
+import {message} from '../models/Task';
 
 type TaskItemProps = {
-  task: Task & Realm.Object;
+  task: message & Realm.Object;
 };
 
 export const TaskItem = React.memo<TaskItemProps>(
@@ -17,7 +17,7 @@ export const TaskItem = React.memo<TaskItemProps>(
         <Text style={styles.icon}>{'○'}</Text>
         <View style={styles.descriptionContainer}>
           <Text numberOfLines={1} style={styles.description}>
-            {task.message}
+            {task.messageText}
           </Text>
         </View>
       </View>

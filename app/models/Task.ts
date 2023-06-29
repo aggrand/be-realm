@@ -13,7 +13,7 @@ import Realm, {BSON} from 'realm';
 // it to a Realm schema automatically.
 export class message extends Realm.Object {
   _id: BSON.ObjectId = new BSON.ObjectId();
-  message!: string;
+  messageText!: string;
   createdAt: Date = new Date();
   userID!: string;
 

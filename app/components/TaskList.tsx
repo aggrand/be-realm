@@ -2,11 +2,11 @@ import React from 'react';
 import {View, FlatList, StyleSheet} from 'react-native';
 import {Realm} from '@realm/react';
 
-import {Task} from '../models/Task';
+import {message} from '../models/Task';
 import {TaskItem} from './TaskItem';
 
 type TaskListProps = {
-  tasks: Realm.Results<Task & Realm.Object>;
+  tasks: Realm.Results<message & Realm.Object>;
 };
 
 export const TaskList: React.FC<TaskListProps> = ({
@@ -16,7 +16,7 @@ export const TaskList: React.FC<TaskListProps> = ({
     <View style={styles.listContainer}>
       <FlatList
         data={tasks}
-        keyExtractor={task => task._id.toString()}
+        keyExtractor={message => message._id.toString()}
         renderItem={({item}) => (
           <TaskItem
             task={item}

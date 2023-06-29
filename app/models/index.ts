@@ -1,3 +1,3 @@
-import {Task} from './Task';
+import {message} from './Task';
 
-export const schemas = [Task];
+export const schemas = [message];

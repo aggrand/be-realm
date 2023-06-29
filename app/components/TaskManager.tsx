@@ -1,7 +1,7 @@
 import React, {useCallback} from 'react';
 import {View, StyleSheet, Switch, Text} from 'react-native';
 
-import {Task} from '../models/Task';
+import {message} from '../models/Task';
 import {IntroText} from './IntroText';
 import {AddTaskForm} from './AddTaskForm';
 import TaskList from './TaskList';
@@ -10,7 +10,7 @@ import {useRealm} from '@realm/react';
 import {shadows} from '../styles/shadows';
 
 export const TaskManager: React.FC<{
-  tasks: Realm.Results<Task & Realm.Object>;
+  tasks: Realm.Results<message & Realm.Object>;
   userID?: string;
   setShowMessages: (showMessages: boolean) => void;
   showMessages: boolean;
@@ -18,8 +18,8 @@ export const TaskManager: React.FC<{
   const realm = useRealm();
 
   const handleAddTask = useCallback(
-    (message: string): void => {
-      if (!message) {
+    (messageText: string): void => {
+      if (!messageText) {
         return;
       }
 
@@ -31,8 +31,8 @@ export const TaskManager: React.FC<{
       // of sync participants to successfully sync everything in the transaction, otherwise
       // no changes propagate and the transaction needs to start over when connectivity allows.
       realm.write(() => {
-        return realm.create(Task, {
-          message,
+        return realm.create("message", {
+          messageText: messageText,
           userID: userID ?? 'SYNC_DISABLED',
         });
       });

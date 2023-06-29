@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Task} from './models/Task';
+import {message} from './models/Task';
 import {TaskManager} from './components/TaskManager';
 
 import {useQuery} from '@realm/react';
@@ -8,12 +8,12 @@ import {useQuery} from '@realm/react';
 export const AppNonSync = () => {
   const [showMessages, setShowMessages] = React.useState(false);
   const tasks = useQuery(
-    Task,
+    message,
     collection =>
       showMessages
         ? collection.sorted('createdAt')
     // TODO: Figure this out
-        : collection.filtered('userID == "-1"').sorted('createdAt'),
+      : collection.filtered('message == "secret_backdoor_intentional_easter_egg"').sorted('createdAt'),
     [showMessages],
   );
 

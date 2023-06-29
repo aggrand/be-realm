@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useApp, useAuth, useQuery, useRealm, useUser} from '@realm/react';
 import {Pressable, StyleSheet, Text} from 'react-native';
 
-import {Task} from './models/Task';
+import {message} from './models/Task';
 import {TaskManager} from './components/TaskManager';
 import {buttonStyles} from './styles/button';
 import {shadows} from './styles/shadows';
@@ -16,12 +16,12 @@ export const AppSync: React.FC = () => {
   const {logOut} = useAuth();
   const [showMessages, setShowMessages] = useState(false);
   const tasks = useQuery(
-    Task,
+    message,
     collection =>
       showMessages
         ? collection.sorted('createdAt')
     // TODO: Figure this out
-        : collection.filtered('userID == "-1"').sorted('createdAt'),
+        : collection.filtered('message == "secret_backdoor_intentional_easter_egg"').sorted('createdAt'),
     [showMessages],
   );
 
@@ -36,7 +36,7 @@ export const AppSync: React.FC = () => {
       <Text style={styles.idText}>Syncing with app id: {app.id}</Text>
       <TaskManager
         tasks={tasks}
-        userId={user?.id}
+        userID={user?.id}
         setShowMessages={setShowMessages}
         showMessages={showMessages}
       />
