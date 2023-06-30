@@ -28,5 +28,5 @@ exports = async function(nextOpen){
 
   console.log("updated open time from", nextOpen, "to", newNextOpen);
   
-  return;
+  return "successful launch!";
 };
