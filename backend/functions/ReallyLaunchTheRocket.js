@@ -1,4 +1,5 @@
 exports = async function(nextOpen){
+  console.log(nextOpen)
   // Find the name of the MongoDB service you want to use (see "Linked Data Sources" tab)
   var serviceName = "mongodb-atlas";
 
@@ -10,7 +11,7 @@ exports = async function(nextOpen){
   var collection = context.services.get(serviceName).db(dbName).collection(collName);
   
     // can call with nextOpen == undefined or with a real Date
-  if (!nextOpen) {
+  if (!(nextOpen instanceof Date)) {
       var findResult;
       findResult = await collection.findOne({});
       nextOpen = findResult.nextOpen
