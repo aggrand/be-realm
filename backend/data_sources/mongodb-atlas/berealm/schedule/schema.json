@@ -3,17 +3,13 @@
         "_id": {
             "bsonType": "objectId"
         },
-        "lastOpen": {
-            "bsonType": "date"
-        },
-        "nextOpen": {
+        "openTime": {
             "bsonType": "date"
         }
     },
     "required": [
         "_id",
-        "lastOpen",
-        "nextOpen"
+        "openTime"
     ],
     "title": "schedule"
 }
