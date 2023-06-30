@@ -10,23 +10,25 @@ exports = async function(nextOpen){
   // Get a collection from the context
   var collection = context.services.get(serviceName).db(dbName).collection(collName);
   
-    // can call with nextOpen == undefined or with a real Date
+  let delta =  1 * 5 * 1000 // 5 secs
+  let curTime = new Date();
+  
+  var res = await collection.deleteOne({"openTime": {$gt: curTime}});
+  
+  // if called without a date, will set one in 5 seconds
   if (!(nextOpen instanceof Date)) {
-      var findResult;
-      findResult = await collection.findOne({});
-      nextOpen = findResult.nextOpen
+      nextOpen = new Date(curTime.getTime() + delta);
   }
 
-  // randomly choose a time for tomorrow
+  /*// randomly choose a time for tomorrow
   // TODO between business hours?
   // TODO not garbage
   delta =  1 * 10 * 1000 // 10 secs
   curTime = (new Date()).getTime();
-  newNextOpen = new Date(curTime + delta);
+  newNextOpen = new Date(curTime + delta);*/
 
-  await collection.updateOne({}, {nextOpen: newNextOpen, lastOpen: nextOpen})
+  await collection.insertOne({openTime: nextOpen})
 
-  console.log("updated open time from", nextOpen, "to", newNextOpen);
-  
-  return "successful launch!";
+  console.log("set next open time to", nextOpen);
+  return "successful scheduling";
 };
