@@ -20,12 +20,11 @@ exports = async function(nextOpen){
   // randomly choose a time for tomorrow
   // TODO between business hours?
   // TODO not garbage
-  delta =  5 * 60 * 1000 // 5 min
-  newNextOpen = new Date(nextOpen.getTime() + delta)
+  delta =  1 * 10 * 1000 // 10 secs
+  curTime = (new Date()).getTime();
+  newNextOpen = new Date(curTime + delta);
 
   await collection.updateOne({}, {nextOpen: newNextOpen, lastOpen: nextOpen})
-  
-  
 
   console.log("updated open time from", nextOpen, "to", newNextOpen);
   
