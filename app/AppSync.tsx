@@ -13,6 +13,8 @@ import {OfflineModeButton} from './components/OfflineModeButton';
 import * as Device from 'expo-device';
 import * as Notifications from "expo-notifications";
 
+let lastScheduledTime = undefined;
+
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
     shouldShowAlert: true,
@@ -24,6 +26,13 @@ Notifications.setNotificationHandler({
 export async function schedulePushNotification(
   openTime: Date,
 ) {
+  // TODO: Shouldn't be needed? To prevent duplicate notifications
+  if (lastScheduledTime && lastScheduledTime.getTime() === openTime.getTime()) {
+    console.log("they are equal")
+    return;
+  }
+  console.log("they are NOT equal ", lastScheduledTime, openTime)
+  lastScheduledTime = openTime;
   const id = await Notifications.scheduleNotificationAsync({
     content: {
       title: "Time to BeRealm!",
@@ -124,17 +133,14 @@ export const AppSync: React.FC = () => {
   const tasks = tasksQuery.filtered(`openTime == $0`, lastOpen).sorted('createdAt')
 
   useEffect(() => {
-    schedulePushNotification(nextOpen);
-  }, [nextOpen]);
-
-  useEffect(() => {
     realm.subscriptions.update(mutableSubs => {
       console.log("running useeffect")
       mutableSubs.removeAll();
       mutableSubs.add(tasks);
       mutableSubs.add(scheduleObj);
     });
-  }, [realm, tasks, lastOpen, scheduleObj]);
+    schedulePushNotification(nextOpen);
+  }, [realm, tasks, lastOpen, nextOpen]);
 
   return (
     <>
